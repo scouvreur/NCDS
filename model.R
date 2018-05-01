@@ -8,8 +8,8 @@ ncds = readRDS("ncds.Rds")
 
 #Load libraries
 library(MASS)
-#library(ggplot2)
-#library(car)
+library(ggplot2)
+library(car)
 
 head(ncds)
 summary(ncds)
@@ -17,9 +17,9 @@ cor(ncds[,c("MWB", "NHC", "SUPPORT", "SOCPART")])
 
 plot(MWB ~ NHC, ncds)
 
-#ggplot(ncds, aes(NHC, MWB)) + geom_point() +
-#  geom_smooth(method = "lm") + theme_classic() +
-#  scale_y_continuous(limits = c(0, 56))
+ggplot(ncds, aes(NHC, MWB)) + geom_point() +
+ geom_smooth(method = "lm") + theme_classic() +
+ scale_y_continuous(limits = c(0, 56))
 
 #You can fit a simple linear regression of Mental Wellbeing
 #on Neighbourhood Cohesion as follows:
@@ -98,4 +98,3 @@ redicted values (Model 4)", cex.main = 0.8,
 
 #Compare Model 4 to Model 3
 anova(mod_3, mod_4)
-
